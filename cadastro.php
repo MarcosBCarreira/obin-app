@@ -1,14 +1,13 @@
 <html>
-    <!-------------------------------------------------------------------------------
+<!-------------------------------------------------------------------------------
     Desenvolvimento Web
-    PUCPR
-    Profa. Cristina V. P. B. Souza
-    Agosto/2022
+    Feito com base no exercício da disciplina de ADS: PUCPR
+    Profa. Cristina V. P. B. Souza   2023-2
 ---------------------------------------------------------------------------------->
 <!-- Cadastro.php --> 
 	<head>
     <meta charset="UTF-8">
-      <title>Clínica Médica ABC</title>
+      <title>Observatório da Inclusão - APP</title>
 	  <link rel="icon" type="image/png" href="imagens/favicon.png" />
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
 	  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">

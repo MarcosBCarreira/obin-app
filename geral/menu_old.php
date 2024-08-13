@@ -1,12 +1,22 @@
-<?php
-session_start();
-if(!isset($_SESSION ['login'])){// Não houve login ainda
-    unset($_SESSION ['nao_autenticado']);
-	unset($_SESSION ['mensagem_header']);
-	unset($_SESSION ['mensagem']);
-	header('location: index.php');// Vai para a página inicial
-}?>
-    
+<!-------------------------------------------------------------------------------
+    Desenvolvimento Web
+    PUCPR
+    Profa. Cristina V. P. B. Souza
+    Agosto/2022
+---------------------------------------------------------------------------------->
+<!-- menu.php -->
+
+	<!-- Top -->
+	<?php 
+	session_start();
+	if(!isset($_SESSION ['login'])){                              // Não houve login ainda
+        unset($_SESSION ['nao_autenticado']);
+		unset($_SESSION ['mensagem_header'] ); 
+		unset($_SESSION ['mensagem'] ); 
+		header('location: index.php');    // Vai para a página inicial
+		exit();
+    }
+	?>
 	<div class="w3-top"   > 
 		<div class="w3-row w3-white w3-padding" >
 			<div class="w3-half" style="margin:0 0 0 0">
@@ -55,6 +65,4 @@ if(!isset($_SESSION ['login'])){// Não houve login ainda
 		</div>
 		
 	</div>
-
-
 	<script type="text/javascript" src="js/myScriptClinic.js"></script>

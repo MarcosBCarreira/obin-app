@@ -10,7 +10,7 @@
 <html>
 	<head>
 
-	  <title>Clínica Médica ABC</title>
+	  <title>Observatório da Inclusão - APP</title>
 	  <link rel="icon" type="image/png" href="imagens/favicon.png" />
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
 	  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -38,7 +38,7 @@
 	echo "</p> "
 	?>
 	<div class="w3-container w3-theme">
-	<h2>Exclusão de Médico</h2>
+	<h2>Exclusão de Associado</h2>
 	</div>
 
 	<!-- Acesso ao BD-->
@@ -46,8 +46,8 @@
 				
 		// Cria conexão
 		$conn = mysqli_connect($servername, $username, $password, $database);
-
-		// ID do registro a ser excluído
+		
+		//ID do registro a ser excluído
 		$id = $_POST['Id'];
 
 		// Verifica conexão
@@ -55,19 +55,33 @@
 			die("Connection failed: " . mysqli_connect_error());
 		}
 
-		// Faz DELETE na Base de Dados
-		$sql = "DELETE FROM Medico WHERE ID_Medico = $id";
+		// Iniciar transação
+		$conn->begin_transaction();
 
-		echo "<div class='w3-responsive w3-card-4'>";
-		if ($result = mysqli_query($conn, $sql)) {
-			echo "<p>&nbsp;Registro excluído com sucesso! </p>";
-		} else {
-			echo "<p>&nbsp;Erro executando DELETE: " . mysqli_error($conn . "</p>");
-		}
-        echo "</div>";
-		mysqli_close($conn);  //Encerra conexao com o BD
+		Try{
+			// Primeiro DELETE
+			$sql1 = "DELETE FROM socios WHERE id = $id";
+			if (!$conn->query($sql1)) {
+				throw new Exception("Erro ao deletar da tabela socios: " . $conn->error);
+			}		
+			// Segundo DELETE
+			$sql2 = "DELETE FROM addresses WHERE id = $id";
+			if (!$conn->query($sql2)) {
+				throw new Exception("Erro ao deletar da tabela addresses: " . $conn->error);
+			}		
+			// Se tudo deu certo, commit na transação
+			$conn->commit();
+			echo "<p><p>Registros excluídos com sucesso.";
 
+		 } catch (Exception $e) {
+			// Se houve erro, rollback na transação
+			$conn->rollback();
+			echo "Falha ao deletar registros: " . $e->getMessage();
+	 	}	 
+		$conn->close(); 	
+		
 		?>
+
   	</div>
 	</div>
 

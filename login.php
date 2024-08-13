@@ -8,7 +8,7 @@
 <!-- Login.php --> 
 	<head>
     <meta charset="UTF-8">
-      <title>Aplicativo Observatório Inclusão</title>
+      <title>Observatório da Inclusão - APP</title>
 	  <link rel="icon" type="image/png" href="imagens/favicon.png" />
 	  <meta name="viewport" content="width=device-width, initial-scale=1">
 	  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -42,7 +42,7 @@
             unset($_SESSION['nao_autenticado']);
             unset($_SESSION ['mensagem_header'] ); 
             unset($_SESSION ['mensagem'] ); 
-            header('location: /obin_app/medlistar.php');
+            header('location: /obin_app/sociolistar.php');
             exit();
             
         }else{

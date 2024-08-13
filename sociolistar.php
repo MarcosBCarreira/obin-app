@@ -1,27 +1,21 @@
+<?php
+require 'geral/menu.php';
+require 'bd/conectaBD.php';
+?>
 <!DOCTYPE html>
-<!-------------------------------------------------------------------------------
-    Desenvolvimento Web
-    PUCPR
-    Profa. Cristina V. P. B. Souza
-    Agosto/2022
----------------------------------------------------------------------------------->
-<!-- medListar.php -->
-
 <html>
-
 <head>
     <meta charset="UTF-8">
-    <title>Clínica Médica ABC</title>
+    <title>Observatório da Inclusão - APP</title>
     <link rel="icon" type="image/png" href="imagens/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="css/customize.css">
 </head>
-
 <body onload="w3_show_nav('menuMedico')">
-    <!-- Inclui MENU.PHP  -->
-    <?php require 'geral/menu.php'; ?>
-    <?php require 'bd/conectaBD.php'; ?>
+<!-- Inclui MENU.PHP - desloquei o código PHP para a primeira linha deste arquivo pq dava problema no heard do menu.php, qdo chamado na aqui. -->
+
+    <!-- Conteúdo Principal: deslocado para direita em 270 pixels quando a sidebar é visível -->
 
     <!-- Conteúdo Principal: deslocado para direita em 270 pixels quando a sidebar é visível -->
     <div class="w3-main w3-container" style="margin-left:270px;margin-top:130px;">
@@ -129,10 +123,10 @@
                         //Atualizar e Excluir registro de médicos
                             ?>
                             <td>
-                                <a href='medAtualizar.php?id=<?php echo $cod; ?>'><img src='imagens/Edit.png' title='Editar Médico' width='32'></a>
+                                <a href='socioAtualizar.php?id=<?php echo $cod; ?>'><img src='imagens/Edit.png' title='Editar Associado' width='32'></a>
                             </td>
                             <td>
-                                <a href='medExcluir.php?id=<?php echo $cod; ?>'><img src='imagens/Delete.png' title='Excluir Médico' width='32'></a>
+                                <a href='socioExcluir.php?id=<?php echo $cod; ?>'><img src='imagens/Delete.png' title='Excluir Associado' width='32'></a>
                             </td>
                             </tr>
                     <?php

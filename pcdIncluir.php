@@ -1,6 +1,3 @@
-<?php require 'geral/menu.php'; ?>
-<?php require 'bd/conectaBD.php'; ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +9,9 @@
 	<link rel="stylesheet" href="css/customize.css">
 </head>
 <body onload="w3_show_nav('menuMedico')">
+	<!-- Inclui MENU.PHP  -->
+	<?php require 'geral/menu.php'; ?>
+	<?php require 'bd/conectaBD.php'; ?>
 
 	<!-- Conteúdo Principal: deslocado paa direita em 270 pixels quando a sidebar é visível -->
 	<div class="w3-main w3-container" style="margin-left:270px;margin-top:130px;">
@@ -38,7 +38,7 @@
 				// Verifica conexão 
 				if ($conn->connect_error) {
 					die("<strong> Falha de conexão: </strong>" . $conn->connect_error);
-				}                
+				}
 
 				// Obtém as Especialidades Médicas na Base de Dados para um combo box
 				$sqlG = "SELECT id, nome_def FROM deficiencias";
@@ -69,8 +69,9 @@
 				?>
 				<div class="w3-responsive w3-card-4">
 					<div class="w3-container w3-theme">
-						<h2>Cadastro/Alteração Associado(a)s Observatório</h2>
-					</div>					
+						<h2>PCD - Cadastro/Alteração</h2>
+					</div>
+					
                     <form class="w3-container" action="socioIncluir_exe.php" method="post" enctype="multipart/form-data">
                         <table class='w3-table-all'>
                         <tr>
@@ -154,9 +155,10 @@
                                 </td>
                             </tr>  
                             
-                            <tr>                          
+                            <!-- não faz sentido pedir isso do pcd  
+                            <tr>                                                       
                                 <td style="width: 25%;">                        
-                                    <label class="w3-text-IE"><b>É pessoa responsável por uma PCD?</b>*</label><br>                     
+                                    <label class="w3-text-IE"><b>É pessoa com deficiência ou responsável por uma?</b>*</label><br>                     
                                     <select id="pcd_responsavel" name="pcd_responsavel">
                                         <option value=""></option> 
                                         <option value="pcd">PCD</option>                            
@@ -166,10 +168,11 @@
                                         <option value="tio(a)">Tio(a)</option>                                                                                
                                         <option value="outro">Outro</option>
                                     </select>                     
-                                </td>
+                                </td> 
+
                                 <td style="width: 35%;">                                        
                                         <label class="w3-text-IE"><b>Nome da Pessoa com deficiência</b></label>                                        
-                                        <select name="nome_pcd" id="nome_pcd" class="w3-input w3-border w3-light-grey">
+                                        <select name="nome_pcd" id="nome_pdc" class="w3-input w3-border w3-light-grey">
                                         <option value=""></option>
                                         <?php
                                         foreach ($optionsPCD as $key => $value) {
@@ -177,8 +180,8 @@
                                         }
                                         ?>
                                     </select> 
-                                </td>  
-                                <!--   
+
+                                </td>-->     
                                 <td style="width: 40%;">                                  
                                     <label class="w3-text-IE"><b>Deficiência</b>*</label>
                                     <select name="deficiencia" id="deficiencia" class="w3-input w3-border w3-light-grey">
@@ -189,9 +192,9 @@
                                         }
                                         ?>
                                     </select>
-                                </td>   -->
+                                </td>                                                                
                             </tr>
-                            <!--                           
+
                             <tr>                            
                                 <td style="width: 30%">
                                     
@@ -206,7 +209,6 @@
                                     
                                 </td>
                             </tr>
-                            -->
 
 
                         </table>                

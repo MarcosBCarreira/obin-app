@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt">
+<!-------------------------------------------------------------------------------
+   Baseado no material da disciplina que fiz na PUC, conforme dados abaixo:
+    Desenvolvimento Web
+    PUCPR
+    Profa. Cristina V. P. B. Souza
+    Agosto/2022
+---------------------------------------------------------------------------------->
+<!-- Index.php --> 
+
 <html>
 	<head>	
         <meta charset="UTF-8">
@@ -13,17 +22,15 @@
 	<body >  
         <?php
             session_start();
-            if (isset($_SESSION ['login'])) {
-                ob_start(); 
-                header("location: /obin_app/sociolistar.php");// Vai para as funcionalidades do site
+            if (isset($_SESSION ['login'])) {                               // Se existe usuário logado 
+                header("location: /obin_app/sociolistar.php");  // Vai para as funcionalidades do site
                 exit();
-                ob_end_flush();
             }
         ?>
         <!-- Menu Superior -->
         <div class="w3-top" id="LoginCadastro" >
             <div class="w3-row w3-white w3-padding" >
-                <div class="w3-half" style="margin:0 0 0 0"><a href="."><img src='imagens/logo.jpg' alt='  Observatório da Inclusão ' height="45" width="45"></a></div>
+                <div class="w3-half" style="margin:0 0 0 0"><a href="."><img src='imagens/logo.jpg' alt='  Clínica Médica ABC ' height="45" width="45"></a></div>
                 <div class="w3-half w3-margin-top w3-wide w3-hide-medium w3-hide-small">
                 </div>
             </div>
@@ -37,7 +44,7 @@
         <div class="w3-top">
             <div class="w3-row w3-white w3-padding">
                 <div class="w3-half" style="margin:0 0 0 0">
-                    <a href="."><img src='imagens/logo.jpg' alt=' Observatório da Inclusão ' height="45" width="45"></a>
+                    <a href="."><img src='imagens/logo.jpg' alt=' Clínica ABC ' height="45" width="45"></a>
                 </div>
             </div>
         </div>

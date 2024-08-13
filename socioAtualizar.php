@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <!-------------------------------------------------------------------------------
-    Desenvolvimento Web
-    PUCPR
-    Profa. Cristina V. P. B. Souza
-    Agosto/2022
+   Adaptado por Marcos B. Carreira a partir do modelo da disciplina 
+   Desenvolvimento Web PUCPR, da Profa. Cristina V. P. B. Souza, 2023-2
 ---------------------------------------------------------------------------------->
-<!-- MedAtualizar.php -->
+<!-- socioAtualizar.php -->
 
 <html>
 
 <head>
-	<title>Clínica Médica ABC</title>
+	<title>Observatório da Inclusão - APP</title>
 	<link rel="icon" type="image/png" href="imagens/favicon.png" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -51,7 +49,16 @@
 				}
 
 				// Faz Select na Base de Dados
-				$sql = "SELECT ID_Medico, Nome, CRM, Dt_Nasc, ID_Espec, Foto FROM Medico WHERE ID_Medico = $id";
+				//$sql = "SELECT ID_Medico, Nome, CRM, Dt_Nasc, ID_Espec, Foto FROM Medico WHERE ID_Medico = $id";
+				$sql = "SELECT fullname, cpf, celular, email, dt_nasc, profission 
+						FROM socios 
+						WHERE id = $id";
+
+				//$sql_consulta = "SELECT id FROM socios WHERE fullname = '$fullname';";
+					$resulta_consulta_cod = $conn->query($sql);
+									
+					$tmp = $resulta_consulta_cod->fetch_assoc();
+					$cod_socio = $tmp["id"];
 
 				//Inicio DIV form
 				echo "<div class='w3-responsive w3-card-4'>";
@@ -59,12 +66,12 @@
 					if ($result->num_rows == 1) {          // Retorna 1 registro que será atualizado  
 						$row = $result->fetch_assoc();
 
-						$especialidade = $row['ID_Espec'];
-						$id_medico     = $row['ID_Medico'];
-						$nome          = $row['Nome'];
-						$CRM           = $row['CRM'];
-						$dataNasc      = $row['Dt_Nasc'];
-						$foto          = $row['Foto'];
+						//$especialidade = $row['esp'];
+						$id_medico     = $row['id'];
+						$nome          = $row['fullname'];
+						$CPF           = $row['cpf'];
+						//$dataNasc      = $row['Dt_Nasc'];
+						//$foto          = $row['Foto'];
 
 						// Obtém as Especialidades Médicas na Base de Dados para um combo box
 						$sqlG = "SELECT ID_Espec, Nome_Espec FROM Especialidade";
@@ -83,7 +90,7 @@
 						<div class="w3-container w3-theme">
 							<h2>Altere os dados do Médico Cód. = [<?php echo $id_medico; ?>]</h2>
 						</div>
-						<form class="w3-container" action="medAtualizar_exe.php" method="post" enctype="multipart/form-data">
+						<form class="w3-container" action="socioAtualizar_exe.php" method="post" enctype="multipart/form-data">
 							<table class='w3-table-all'>
 								<tr>
 									<td style="width:50%;">
